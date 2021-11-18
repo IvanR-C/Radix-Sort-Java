@@ -4,6 +4,8 @@ import java.util.*;
 public class Main {
     public static void radixSort(int[] arr) {
 
+        int max =0;
+
         ArrayList<ArrayList<String>> output = new ArrayList<>();
 
         String[] strArray = Arrays.stream(arr).mapToObj(String::valueOf).toArray(String[]::new);
@@ -17,11 +19,14 @@ public class Main {
                 System.out.println("*** Abort *** the input has at least one key with odd digits");
                 return;
             }
+            else if(s.length() > max){
+                max = s.length();
+            }
         }
 
         for (String s : strArray) {
             int x=Integer.parseInt(s);
-            s = String.format("%03d" , x);
+            s = String.format("%1$" + max + "s", s).replace(' ', '0');
             for (int i = 1; i <= s.length(); i++) {
                 for (int j = 0; j < 5; j++) {
                     if (s.charAt(s.length() - i) == (char) (j * 2 + '0')) {
