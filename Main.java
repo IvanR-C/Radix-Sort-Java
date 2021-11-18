@@ -8,14 +8,12 @@ public class Main {
         String[] strArray = Arrays.stream(arr).mapToObj(String::valueOf).toArray(String[]::new);
 
         for (String s : strArray) {
-            for (int i = 0; i < (s.length()); i++) {
-                index = Character.getNumericValue(s.charAt(i));
 
-                if (index % 2 != 0) {
-                    System.out.println("*** Abort *** the input has at least one key with odd digits");
-                    return;
-                }
+            if(s.contains("1") || s.contains("3") || s.contains("5") || s.contains("7") || s.contains("9")){
+                System.out.println("*** Abort *** the input has at least one key with odd digits");
+                return;
             }
+
         }
 
         System.out.println(Arrays.toString(strArray));
